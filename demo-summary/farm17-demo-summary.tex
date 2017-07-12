@@ -3,7 +3,8 @@
 %% For single-blind review submission
 %\documentclass[sigplan,10pt,review]{acmart}\settopmatter{printfolios=true}
 %% For final camera-ready submission
-\documentclass[sigplan,10pt]{acmart}\settopmatter{}
+\documentclass[sigplan]{acmart}
+%\settopmatter{}
 
 %% Note: Authors migrating a paper from traditional SIGPLAN
 %% proceedings format to PACMPL format should change 'sigplan' to
@@ -68,6 +69,19 @@
 
 
 \usepackage{balance}
+
+%%% The following is specific to FARM'17 and the paper
+%%% 'FARM 2017 Demo Summary'
+%%% by Jean Bresson and Michael Sperber.
+%%%
+\setcopyright{acmcopyright}
+\acmDOI{10.1145/3122938.3122945}
+\acmISBN{978-1-4503-5180-5/17/09}
+\acmConference[FARM'17]{5th ACM SIGPLAN International Workshop on Functional Art, Music, Modeling and Design}{September 9, 2017}{Oxford, UK} 
+\acmYear{2017}
+\copyrightyear{2017}
+\acmPrice{15.00}
+
 
 \begin{document}
 
@@ -315,14 +329,18 @@ Conceptually the authors define their language as deriving from the classic LOGO
 %\end{figure}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 %\section{LambdaCube 3D: A Purely Functional DSL for Programming GPUs}
 %Csaba Hruska and Andor P\'enzes	
 %%% RESIGNED
+
+
+
+%\begin{figure*}[!b]
+%\centering
+%\includegraphics[width=.98\columnwidth]{./arpeggigon.png}
+%\caption{\label{fig:arpeggigon}
+%The Arpeggigon by H. Nilsson.}
+%\end{figure*}
 
 
 %%% Acknowledgments
