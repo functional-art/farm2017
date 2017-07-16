@@ -3,7 +3,8 @@
 %% For single-blind review submission
 %\documentclass[sigplan,10pt,review]{acmart}\settopmatter{printfolios=true}
 %% For final camera-ready submission
-\documentclass[sigplan,10pt]{acmart}\settopmatter{}
+\documentclass[sigplan]{acmart}
+%\settopmatter{}
 
 %% Note: Authors migrating a paper from traditional SIGPLAN
 %% proceedings format to PACMPL format should change 'sigplan' to
@@ -68,6 +69,19 @@
 
 
 \usepackage{balance}
+
+%%% The following is specific to FARM'17 and the paper
+%%% 'FARM 2017 Demo Summary'
+%%% by Jean Bresson and Michael Sperber.
+%%%
+\setcopyright{acmcopyright}
+\acmDOI{10.1145/3122938.3122945}
+\acmISBN{978-1-4503-5180-5/17/09}
+\acmConference[FARM'17]{5th ACM SIGPLAN International Workshop on Functional Art, Music, Modeling and Design}{September 9, 2017}{Oxford, UK} 
+\acmYear{2017}
+\copyrightyear{2017}
+\acmPrice{15.00}
+
 
 \begin{document}
 
@@ -192,11 +206,6 @@ Extended abstracts of these demos are available on the FARM 2017 web site at \ur
 <concept_desc>Applied computing~Arts and humanities</concept_desc>
 <concept_significance>500</concept_significance>
 </concept>
-%<concept>
-%<concept_id>10011007.10011006.10011050.10011017</concept_id>
-%<concept_desc>Software and its engineering~Domain specific languages</concept_desc>
-%<concept_significance>300</concept_significance>
-%</concept>
 </ccs2012>
 \end{CCSXML}
 
@@ -218,26 +227,51 @@ Extended abstracts of these demos are available on the FARM 2017 web site at \ur
 \maketitle
 
 
-
+\bigskip
 \section*{Introduction}
 
 Six demonstrations were presented at the 5th ACM SIGPLAN International Workshop on Functional Art, Music, Modelling and Design (FARM). 
 They range from applications of functional programming in music and sound, to more general purpose creative programming, and to 3D graphics and animation.
 All extended abstracts are available on the FARM 2017 web site at \url{http://functional-art.org/2017/}.
 
-%%% CHECK NUMBER OF PRESENTATIONS
-
+\bigskip
 \section{Representation of Musical Notation in Haskell}
-%%% ASKED FOR MORE INFO
-%%% ASKED FOR PICTURE
 
-In this demonstration Edward Lilley (University of Cambridge, UK) introduces a formal computational approach to music notation. 
-He illustrates his approach with computer representations of musical extracts using Haskell and an embedded Lilypond parser.
-	
+In this demonstration Edward Lilley (Institute of Astronomy, University of Cambridge, UK) introduces a formal representation of traditional musical notation suitable for computers. 
+%He illustrates his approach with computer representations of musical extracts using Haskell and an embedded Lilypond parser.
+%	
+%
+An algebra of musical intervals is found, which is closed with respect to interval addition. This makes it possible to consistently % and automatically 
+apply two families of tuning systems: syntonic temperaments and equal temperaments. 
+% (many of which were known to musicians at early times). 
+A Haskell program implements this musical representation, with audio output in Csound.
+%A program has been written in Haskell to apply this musical representation, with audio output via Csound. 
+%Several historical pieces of music are synthesised, including one known to have been written for a keyboard with nineteen keys per octave (Guillaume de Costeley, 16th century, French). 
+%An additional feature of the program is that it 
+This program
+represents musical phrases internally using a RoseTree data structure, and taking advantage of this a parser for Lilypond files (exclusively using parser combinators from the Parsec library) is demonstrated.
 
 
+% Additional links:
+%
+%- Soundcloud playlists of recordings that demonstrate the software:
+% https://soundcloud.com/ejlflop/sets/demo-of-abstractmusic
+% https://soundcloud.com/ejlflop/sets/victoria-o-quam-gloriosum-est
+%
+%- the software itself
+% https://github.com/ejlilley/AbstractMusic
+%
+%- the Haskell Music Suite, to which an implementation of the new interval algebra has been contributed, in the 'music-pitch' sub-package
+% https://hackage.haskell.org/package/music-suite
+
+% A figure that I will show during the demo: 
+% http://www.ugnus.uk.eu.org/~edward/lattice.pdf
+%If that is too abstract, I think something suitably illustrative would be an image of a keyboard instrument with split black notes, e.g.
+% http://3.bp.blogspot.com/-3y_90L4_Psk/T5TJ9zIYrfI/AAAAAAAAO40/RyT6CCznGj0/s1600/split+keys+harpsichord+c1620.jpg
+%or one of the images on https://en.wikipedia.org/wiki/Split_sharp
+
+\bigskip
 \section{The Arpeggigon: A Functional Reactive Musical Automaton}
-%%% OK
 
 Henrik Nilsson from the University of Nottingham (UK) presents the \textit{Arpeggigon}: 
 an interactive cellular automaton for composing groove-based music. 
@@ -246,7 +280,7 @@ The \textit{Arpeggigon} is implemented in Haskell using Functional Reactive Prog
 %
 It is based on a hexagonal grid laid out as a harmonic table where each of the six possible directions corresponds to a given musical interval. 
 %The automaton is configured by placing different types of tokens interacting on the grid, and runs by playing notes while some of these token perform moves on the grid.
-The automaton is configured by placing different types of tokens on the grid: when the automaton is run, these tokens interact with one or more playheads moving around the grid, resulting in notes corresponding to the positions of the involved tokens to be played.
+The automaton is configured by placing different types of tokens on the grid: when it runs, these tokens interact with one or more playheads moving around the grid, resulting in notes corresponding to the positions of the involved tokens to be played.
    
 %\begin{figure}[h!]
 %\includegraphics[width=.98\columnwidth]{./arpeggigon.png}
@@ -254,46 +288,36 @@ The automaton is configured by placing different types of tokens on the grid: wh
 %The Arpeggigon by H. Nilsson.}
 %\end{figure}
 
-
+\bigskip
 \section{Vivid: Sound Synthesis with Haskell and SuperCollider}
-%%% ASKED FOR MORE INFO OR CONFIRMATION
-%%% ASKED FOR PICTURE
 
 Thomas Murphy (USA) presents a Haskell library for music creation and sound synthesis, coupled with the SuperCollider synthesis engine. 
 \textit{Vivid} allows live-coding performance in Haskell, embedding advanced musical notions such as timing (at the musical and audio sample levels), parallelism, audio graphs, multichannel input and output, etc.
 
-
+\bigskip
 \section{African Polyphony and Polyrhythm}
-%%% OK 
-%%% NO PICTURE (?)
 
 Chris Ford (ThoughtWorks, UK) proposes a programmatic approach to non-Western music analysis and representation, using functional programming to revisit ethnomusicologist Simha Arom's work and insights on Central African polyphony.
 The demonstration takes examples notated in Arom's book \textit{African Polyphony and Polyrhythm}, and renders them in Lisp using the Leipzig composition library for Clojure. 
 
-
+\newpage
 
 \section{Ait: A Concatenative Language for Creative Programming}
-%%% ASKED FOR CONFIRMATION
-%%% ASKED FOR PICTURE
 
 Stian Veum M\o llersen (Bekk Consulting AS, Norway) presents the concatenative language \textit{Ait}. 
-In concatenative languages, composing functions is implemented as the simple concatenation of words. In this presentation M\o llersen demonstrated how this programming style fits the idea of creative programming.
+In concatenative languages, composing functions is implemented as the simple concatenation of words. 
+M\o llersen demonstrates how this programming style fits the idea of creative programming.
 \textit{Ait} inherits the main features of previous concatenative languages such as Forth and Joy.
 It is implemented in JavaScript with bindings to browser APIs, and mainly targets web programming and applications.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \balance
 \section{Octopus: A High-Level Fast 3D Animation Language}
-%%% OK
 
-David Janin and Simon Archipoff (LaBRI, University of Bordeaux, Bordeaux INP) complement a paper presentation on a new algebraic approach to media and 3D graphics programming with this demonstration of the \textit{Octopus} language.
+David Janin and Simon Archipoff (LaBRI, University of Bordeaux, Bordeaux INP, France) complement a paper presentation on a new algebraic approach to media and 3D graphics programming with this demonstration of the \textit{Octopus} language.
 \textit{Octopus} is an EDSL (embedded domain-specific language) extending Haskell with an API for the definition of procedural 3D animations.
 Conceptually the authors define their language as deriving from the classic LOGO with features extended to 3D graphics and animation (that is, including a time dimension). 
-\textit{Octopus} programs generate small abstract drawing specifications on the CPU that are then sent to the OpenGL graphic pipeline for a fast expansion and rendering on the GPU.
+\textit{Octopus} programs generate small abstract drawing specifications on the CPU that are sent to the OpenGL graphic pipeline for a fast expansion and rendering on the GPU.
 
 %\begin{figure}[h!]
 %\includegraphics[width=.98\columnwidth]{./octopus.png}
@@ -301,13 +325,19 @@ Conceptually the authors define their language as deriving from the classic LOGO
 %Octopus 3D animation rendering, by D. Janin and S. Archipoff.}
 %\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section{LambdaCube 3D: A Purely Functional DSL for Programming GPUs}
 %Csaba Hruska and Andor P\'enzes	
-%%% RESIGNED ?
+%%% RESIGNED
+
+
+
+%\begin{figure*}[!b]
+%\centering
+%\includegraphics[width=.98\columnwidth]{./arpeggigon.png}
+%\caption{\label{fig:arpeggigon}
+%The Arpeggigon by H. Nilsson.}
+%\end{figure*}
 
 
 %%% Acknowledgments
